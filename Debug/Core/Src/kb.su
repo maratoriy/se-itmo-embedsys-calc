@@ -1,0 +1,2 @@
+../Core/Src/kb.c:10:19:keyboard_init	16	static
+../Core/Src/kb.c:30:9:check_key	40	static

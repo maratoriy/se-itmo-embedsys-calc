@@ -1,0 +1,5 @@
+pca9538.c:6:19:PCA9538_read_register	1
+pca9538.c:11:19:PCA9538_write_register	1
+pca9538.c:15:19:PCA9538_read_config	3
+pca9538.c:29:19:PCA9538_check_default_config	5
+pca9538.c:46:19:PCA9538_read_inputs	1
