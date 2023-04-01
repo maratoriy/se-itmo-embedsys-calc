@@ -1,6 +1,5 @@
-#include <stdint.h>
-#include "fonts.h"
 #include "stm32f4xx_hal.h"
+#include "fonts.h"
 
 #ifndef OLED_H
 #define OLED_H
@@ -8,28 +7,28 @@
 #define OLED_I2C_ADDR        0x78
 #define OLED_WIDTH           128
 #define OLED_HEIGHT          64
-
-#define OLED_STRING_VSPACE   8
-
-extern I2C_HandleTypeDef hi2c1;
+#define OLED_STRING_SPACE    3
 
 typedef enum {
-	BLACK = 0x0,
-	WHITE = 0x1
-} OLED_color;
+	BLACK = 0x00,
+	WHITE = 0x01
+} OLED_COLOR;
 
 typedef struct {
-	uint16_t curr_x;
-	uint16_t curr_y;
-} OLED_state;
+	uint16_t CurrentX;
+	uint16_t CurrentY;
+} OLED_State;
 
+extern I2C_HandleTypeDef OLED_I2C_PORT;
 
-void OLED_init(void);
-void OLED_update(void);
-void OLED_set_cursor(uint16_t x, uint16_t y);
-void OLED_draw_pixel(uint16_t x, uint16_t y, OLED_color color);
-void OLED_fill(OLED_color color);
-void OLED_draw_char(const char c, font font, OLED_color color);
-void OLED_draw_string(char const* str, font font, OLED_color color);
+uint8_t oled_Init(void);
+void oled_Fill(OLED_COLOR color);
+void oled_UpdateScreen(void);
+void oled_DrawPixel(uint8_t x, uint8_t y, OLED_COLOR color);
+char oled_WriteChar(char ch, FontType Font, OLED_COLOR color);
+char oled_WriteString(char* str, FontType Font, OLED_COLOR color);
+void oled_SetCursor(uint8_t x, uint8_t y);
+void oled_NextLine();
+void oled_Reset();
 
 #endif

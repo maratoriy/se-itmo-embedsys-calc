@@ -28,7 +28,7 @@ Core/Src/kb.o: ../Core/Src/kb.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/pca9538.h ../Core/Inc/main.h ../Core/Inc/kb.h \
- ../Core/Inc/sdk_usart.h ../Core/Inc/usart.h
+ ../Core/Inc/sdk_uart.h ../Core/Inc/usart.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -61,5 +61,5 @@ Core/Src/kb.o: ../Core/Src/kb.c ../Core/Inc/main.h \
 ../Core/Inc/pca9538.h:
 ../Core/Inc/main.h:
 ../Core/Inc/kb.h:
-../Core/Inc/sdk_usart.h:
+../Core/Inc/sdk_uart.h:
 ../Core/Inc/usart.h:

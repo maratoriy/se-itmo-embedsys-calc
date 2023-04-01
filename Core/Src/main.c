@@ -17,6 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <sdk_uart.h>
 #include "main.h"
 #include "i2c.h"
 #include "usart.h"
@@ -28,8 +29,8 @@
 #include <stdio.h>
 
 #include "oled.h"
-#include "sdk_usart.h"
 #include "kb.h"
+#include "calc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,26 +96,41 @@ int main(void)
   MX_USART6_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  OLED_init();
+  oled_Init();
+
+  struct calculator_i calc = {
+  		.buf = {0},
+  		.cur = 0,
+  		.last = 0,
+  		.layout = 0
+  	};
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   while (1)
   {
-    /* USER CODE END WHILE */
-	  uint8_t key = 0;
-	  while(key == 0) {
-		  key = check_key();
-	  }
-	  char str_buf[10];
-	  sprintf(str_buf, "%d", key);
-	  OLED_draw_string(str_buf, font_7x10, WHITE);
+	/* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-	  HAL_Delay(100);
+
+	oled_Reset();
+	oled_WriteString(calc.layout == 1 ? "Calculator    2ndf" : "Calculator", Font_7x10, WHITE);
+	oled_NextLine(Font_7x10);
+
+	oled_WriteString(calc.buf, Font_7x10, WHITE);
+	oled_UpdateScreen();
+	HAL_Delay(250);
+
+	uint8_t Key = 0;
+	while(!(Key)) {
+	  Key = Scan_KB();
+	}
+	calc_Call_Action(&calc, Key-1);
+	/* USER CODE END 3 */
   }
-  /* USER CODE END 3 */
 }
 
 /**

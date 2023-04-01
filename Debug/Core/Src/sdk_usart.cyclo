@@ -1,2 +1,0 @@
-sdk_usart.c:9:6:USART_transmit	1
-sdk_usart.c:13:19:USART_receive	1

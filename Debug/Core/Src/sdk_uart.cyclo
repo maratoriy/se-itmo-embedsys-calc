@@ -1,0 +1,2 @@
+sdk_uart.c:27:6:UART_Transmit	1
+sdk_uart.c:31:19:UART_Receive	1
